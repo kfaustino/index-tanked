@@ -26,10 +26,6 @@ module IndexTanked
         self._ancestors_to_index = ancestors.select{|a|
           a != self && a != ActiveRecord::Base && a.ancestors.include?(ActiveRecord::Base) && !a.abstract_class?
         }
-
-        after_save :add_to_index_tank_after_save
-
-        after_destroy :delete_from_index_tank_after_destroy
       end
     end
   end
